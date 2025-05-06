@@ -182,6 +182,10 @@ def main():
     # Apply feature engineering to create new variables
     combined_df = perform_feature_engineering(combined_df)
     
+    # Export the cleaned data into an Excel Workboot
+    export_path = r"C:\Users\171218\Desktop\Uni\Masters\XE703 - Professional Development\Dataset\data_management\cleaned_data.csv"
+    combined_df.to_csv(export_path, index=False)
+
     # Output an overview of the final DataFrame
     print("\nFinal DataFrame Information:")
     print(combined_df.info())
