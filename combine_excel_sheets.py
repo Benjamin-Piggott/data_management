@@ -139,11 +139,11 @@ def perform_feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     Returns:
         pd.DataFrame: The DataFrame with new engineered features.
     """
-    # Example: Create a new feature that is the difference between 'Cylinde~' and 'RockerN~'
+    # Create a new feature that is the difference between 'Cylinde~' and 'RockerN~'
     if all(col in df.columns for col in ['Cylinde~', 'RockerN~']):
         df['sensor_diff'] = pd.to_numeric(df['Cylinde~'], errors='coerce') - pd.to_numeric(df['RockerN~'], errors='coerce')
     
-    # Example: Log-transform cylinder pressure ('PCYL1') to reduce skew (ensure no negatives or zeros)
+    # Log-transform cylinder pressure ('PCYL1') to reduce skew (ensure no negatives or zeros)
     if 'PCYL1' in df.columns:
         df['log_pressure'] = np.log(pd.to_numeric(df['PCYL1'], errors='coerce') + 1e-6)
     
